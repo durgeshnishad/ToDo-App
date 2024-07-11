@@ -20,7 +20,7 @@ app.post('/todo', async function(req, res){
     const createPayload= req.body
     const parsePayload= createTodo.safeParse(createPayload)
     if(!parsePayload.success){
-        res.status(41).json({
+        res.status(411).json({
             msg: 'wrong input'
         })
         return
@@ -46,7 +46,7 @@ app.put('/completed',async function(req, res){
     await todo.update({
         id: req.body.id
     }),{
-        completed: true
+        completed: false
     }
     res.json({
         msg: 'mark as completed'
