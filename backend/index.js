@@ -27,7 +27,8 @@ app.post('/todo', async function(req, res){
     }
     await todo.create({
         title: createPayload.title,
-        description: createPayload.description
+        description: createPayload.description,
+        completed: false
     })
     res.json({
         msg: 'Todo added'
@@ -46,7 +47,7 @@ app.put('/completed',async function(req, res){
     await todo.update({
         id: req.body.id
     }),{
-        completed: false
+        completed: true
     }
     res.json({
         msg: 'mark as completed'
