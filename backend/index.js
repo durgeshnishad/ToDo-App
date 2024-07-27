@@ -1,12 +1,12 @@
 const express= require('express')
+const cors= require('cors')
 const {createTodo}= require('./types.js')
 const { todo } = require('./db.js')
 const app= express()
 const port=3000
 
-
-
 app.use(express.json())
+app.use(cors())
 
 app.get('/todos',async function(req, res){
     const todos= await todo.find({})
